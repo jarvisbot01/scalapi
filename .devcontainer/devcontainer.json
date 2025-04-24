@@ -1,0 +1,64 @@
+{
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "context": "."
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": "true",
+            "username": "vscode",
+            "userUid": "1000",
+            "userGid": "1000",
+            "upgradePackages": "true"
+        },
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest",
+            "ppa": "false"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "marlosirapuan.nord-deep",
+                "vscode-icons-team.vscode-icons",
+                "gitHub.copilot",
+                "github.copilot-chat",
+                "docker.docker",
+                "ms-python.python",
+                "ms-python.black-formatter"
+            ],
+            "settings": {
+                "editor.tabSize": 4,
+                "terminal.integrated.shell.linux": "/usr/bin/zsh",
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "bash",
+                        "icon": "terminal-debian"
+                    },
+                    "zsh": {
+                        "path": "zsh",
+                        "icon": "terminal-debian"
+                    }
+                },
+                "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
+                "[python]": {
+                  "editor.defaultFormatter": "ms-python.black-formatter",
+                  "editor.formatOnSave": true
+                },
+
+                "github.copilot.chat.codeGeneration.instructions": [
+                    {
+                        "text": "This dev container includes `python3` and `pip3` pre-installed and available on the `PATH`, along with the Python language extensions for Python development."
+                    }
+                ]
+            }
+        }
+    },
+    "remoteUser": "vscode",
+    "remoteEnv": {
+        "DOCKER_BUILDKIT": "1",
+        "DOCKER_DEFAULT_PLATFORM": "linux/amd64"
+    }
+}
